@@ -50,6 +50,58 @@ Pada proyek ini, penulis menggunakan teknik _Content-based Filtering_ dan _Colla
 
 Penggunaan teknik _Content Based Filtering_ pada proyek ini adalah dalam memberikan rekomendasi yang dipersonalisasi berdasarkan data wisatawan dan tempat wisata yang dikunjungi. Sedangkan, teknik _Collaborative Filtering_ untuk merekomendasikan destinasi wisata lain yang mungkin disukai oleh calon wisatawan yang belum pernah mengunjungi tempat tersebut.
 
+## Data Understanding
+
+_Dataset_ yang digunakan pada proyek ini adalah [_Indonesia Tourism Destination_](https://www.kaggle.com/datasets/aprabowo/indonesia-tourism-destination?select=user.csv) yang bersumber dari situs Kaggle. _Dataset_ ini terdiri dari 4 _file_, yaitu `package_tourism.csv`, `tourism_rating.csv`, `tourism_with_id.csv` dan `user.csv`. Berikut informasi mengenai jumlah kolom dan data pada setiap _file_ dapat dilihat pada Tabel 1.
+
+Tabel 1. Jumlah kolom dan data pada masing-masing _file_.
+
+| No. | Nama _File_         | Jumlah Kolom | Jumlah Data |
+| --- | ------------------- | ------------ | ----------- |
+| 1   | package_tourism.csv | 7            | 100         |
+| 2   | tourism_rating.csv  | 3            | 10,000      |
+| 3   | tourism_with_id.csv | 12           | 437         |
+| 4   | user.csv            | 3            | 300         |
+
+Berdasarkan informasi pada Tabel 1 maka dapat dijabarkan variabel pada masing-masing _file_ sebagai berikut:
+
+1. Variabel pada `package_tourism.csv` berisi informasi tentang paket rekomendasi tempat terdekat berdasarkan waktu, biaya, dan _rating_.
+
+   - `Package` merupakan data paket destinasi wisata.
+   - `City` merupakan data kota pada paket destinasi wisata.
+   - `Place_Tourism1` merupakan data tempat destinasi wisata pertama.
+   - `Place_Tourism2` merupakan data tempat destinasi wisata kedua.
+   - `Place_Tourism3` merupakan data tempat destinasi wisata ketiga.
+   - `Place_Tourism4` merupakan data tempat destinasi wisata keempat.
+   - `Place_Tourism5` merupakan data tempat destinasi wisata kelima.
+
+2. Variabel pada `tourism_rating.csv` berisi informasi tentang pengguna yang memberikan _rating_ pada suatu tempat wisata.
+
+   - `User_Id` merupakan data _id_ wisatawan yang memberikan _rating_.
+   - `Place_Id` merupakan data _id_ tempat wisata yang diberikan _rating_.
+   - `Place_Ratings` merupakan data _rating_ tempat wisata.
+
+3. Variabel pada `tourism_with_id.csv` berisi informasi tentang tempat wisata di 5 kota besar yaitu Yogyakarta, Bandung, Jakarta, Semarang dan Surabaya.
+
+   - `Place_Id` merupakan data _id_ tempat wisata.
+   - `Place_Name` merupakan data nama tempat wisata.
+   - `Description` merupakan data deskripsi tempat wisata.
+   - `Category` merupakan data kategori tempat wisata.
+   - `City` merupakan data kota tempat wisata berada.
+   - `Price` merupakan data harga tempat wisata.
+   - `Rating` merupakan data _rating_ tempat wisata.
+   - `Time_Minutes` merupakan data durasi waktu berwisata.
+   - `Coordinate` merupakan data koordinat tempat wisata.
+   - `Lat` merupakan data _latitude_ tempat wisata.
+   - `Long` merupakan data _longitude_ dari tempat wisata.
+
+4. Variabel pada `user.csv` berisi informasi tentang data lokasi dan umur dari pengguna.
+   - `User_Id` merupakan data _id_ dari pengguna.
+   - `Location` merupakan data lokasi pengguna.
+   - `Age` merupakan data umur pengguna.
+
+Berdasarkan data yang digunakan diatas terdapat beberapa bentuk visualisasi data yang digunakan untuk membantu memahami data, contohnya sebagai berikut:
+
 ## REFERENSI
 
 [[1]](https://www.jurnal.ummu.ac.id/index.php/kawasa/article/view/443) T. A. Ruray and R. Pratama, “PENGARUH DAYA TARIK DAN AKSESIBILITAS TERHADAP KEPUTUSAN BERKUNJUNG PADA OBJEK WISATA PANTAI AKESAHU KOTA TIDORE KEPULAUAN,” KAWASA: Jurnal Ilmu-Ilmu Sosial dan Politik, vol. XI, no. 2, Jun. 2020.
