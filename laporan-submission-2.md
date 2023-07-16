@@ -94,6 +94,8 @@ Berdasarkan informasi pada Tabel 1 maka dapat dijabarkan variabel pada masing-ma
    - `Coordinate` merupakan data koordinat tempat wisata.
    - `Lat` merupakan data _latitude_ tempat wisata.
    - `Long` merupakan data _longitude_ dari tempat wisata.
+   - `Unnamed: 11` merupakan data tanpa penjelasan.
+   - `Unnamed: 12` merupakan data tanpa penjelasan.
 
 4. Variabel pada `user.csv` berisi informasi tentang data lokasi dan umur dari pengguna.
    - `User_Id` merupakan data _id_ dari pengguna.
