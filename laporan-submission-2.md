@@ -384,7 +384,7 @@ Cara kerja metode _content-based filtering_ menggunakan _cosine similarity_ adal
 
 3. Perankingan Item: Item yang memiliki nilai _similarity_ tertinggi akan diurutkan dalam urutan tertentu dan dianggap sebagai item yang cocok untuk direkomendasikan.
 
-Hasil _Top-N Recommendations_ pada rekomendasi tempat wisata selain "Bukit Moko" dapat dilihat pada Tabel 13.
+Hasil _Top-N Recommendations_ pada rekomendasi tempat wisata selain "Bukit Moko" dengan kategori "Cagar_Alam" dapat dilihat pada Tabel 13.
 
 Tabel 13. 5 Rekomendasi tempat wisata menggunakan metode _content-based filtering_.
 
@@ -438,6 +438,8 @@ Tabel 14. Contoh rekomendasi tempat wisata menggunakan metode _Collaborative Fil
 **_Content-based Filtering_**
 
 Dari hasil penggunaan _cosine similarity_ pada pemberian rekomendasi tempat wisata dapat dilihat seperti pada Tabel 13. Tempat wisata yang direkomendasikan memiliki nilai _similarity_ tertinggi yaitu 1.0. Hal itu juga menunjukkan bahwa tidak terjadi selisih nilai _similarity_ antar rekomendasi tempat ke 1 sampai 5.
+
+Selain itu, dapat diketahui juga nilai _precision_ dari hasil yang ditunjukkan. _Precision_ merupakan salah satu metrik evaluasi yang digunakan untuk mengukur sejauh mana hasil prediksi yang positif benar-benar relevan atau tepat. Pada konteks proyek sistem rekomendasi ini, untuk menghitung nilai _precision_ yaitu jumlah rekomendasi item yang relevan dibagi jumlah item yang direkomendasikan. Sehingga dapat diketahui nilai _precision_ pada penerapan _content-based filtering_ di proyek ini sebesar 5/5 atau 100%. Artinya rekomendasi yang diberikan seluruhnya relevan berdasarkan kategorinya.
 
 **_Collaborative Filtering_**
 
