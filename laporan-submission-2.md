@@ -414,6 +414,8 @@ Cara kerja metode _collaborative filtering_ menggunakan RecommenderNet adalah se
 
 3. Memperkirakan _Rating_: Setelah kesamaan antara pengguna dan item ditemukan, model akan memperkirakan _rating_ yang mungkin akan diberikan oleh pengguna untuk item yang belum dilihat atau diinteraksikan sebelumnya sehingga dapat memberikan rekomendasi.
 
+Pada proyek ini, digunakan paramter `epochs=100`, `batch_size=8`, _binary crossentropy_ untuk menghitung _loss function_, Adam (_Adaptive Moment Estimation_) sebagai _optimizer_, dan _root mean squared error_ (RMSE) sebagai metrics evaluation.
+
 Hasil _Top-N Recommendations_ pada rekomendasi tempat wisata lain berdasarkan _rating_ tempat wisata sebelumnya yang pernah dikunjungi oleh pengguna dengan _Id_ 195 dapat dilihat pada Tabel 14.
 
 Tabel 14. Contoh rekomendasi tempat wisata menggunakan metode _Collaborative Filtering_.
@@ -432,6 +434,38 @@ Tabel 14. Contoh rekomendasi tempat wisata menggunakan metode _Collaborative Fil
 | La Kana Chapel              | Taman_Hiburan      |
 
 ## Evaluation
+
+**_Content-based Filtering_**
+
+Dari hasil penggunaan _cosine similarity_ pada pemberian rekomendasi tempat wisata dapat dilihat seperti pada Tabel 13. Tempat wisata yang direkomendasikan memiliki nilai _similarity_ tertinggi yaitu 1.0. Hal itu juga menunjukkan bahwa tidak terjadi selisih nilai _similarity_ antar rekomendasi tempat ke 1 sampai 5.
+
+**_Collaborative Filtering_**
+
+Dalam melakukan evaluasi terhadap hasil pelatihan menggunakan RecommenderNet pada metode collaborative filtering digunakan metrik evaluasi RMSE (_Root Mean Square Error_). RMSE adalah salah satu metrik evaluasi yang digunakan untuk mengukur kesalahan atau selisih antara nilai prediksi dan nilai aktual dalam suatu model. RMSE mengukur seberapa akurat model dalam membuat prediksi dengan membandingkan nilai prediksi dengan nilai aktual dan menghitung rata-rata dari kuadrat selisih antara keduanya [[16]](https://gmd.copernicus.org/preprints/7/1525/2014/gmdd-7-1525-2014.pdf).
+
+Rumus dari RMSE adalah sebagai berikut:
+
+RMSE = √(1/n \* ∑(y_i - ŷ_i)^2)
+
+Keterangan:
+
+- `n` adalah jumlah sampel data.
+- `y_i` adalah nilai aktual dari data ke-i.
+- `ŷ_i` adalah nilai prediksi dari data ke-i.
+
+Cara kerja RMSE adalah dengan menghitung selisih antara nilai aktual dan nilai prediksi untuk setiap data, kemudian mengkuadratkan selisih tersebut, menjumlahkan semua kuadrat selisih, dan kemudian mengambil akar kuadrat dari nilai tersebut. Semakin kecil nilai RMSE, semakin baik model dalam melakukan prediksi yang akurat, karena nilai RMSE yang lebih kecil menunjukkan bahwa selisih antara nilai prediksi dan nilai aktual lebih kecil dan mendekati nol.
+
+Pada proyek ini, hasil dari perhitngan RMSE selama proses _training_ dapat dilihat pada Gambar 2.
+
+[![training result](https://i.postimg.cc/VkGLPMJ8/download-2.png)](https://postimg.cc/FYSQjYbW)
+
+Gambar 2. Hasil proses _training_ pada menggunakan model RecommenderNet.
+
+Dari Gambar 2 tersebut dapat diketahui bahwa model memiliki nilai _Root Mean Square Error_ (RMSE) yang relatif rendah pada data _training_ sebesar 0.31. Hal ini menunjukkan bahwa prediksi model cenderung mendekati nilai aktual dengan tingkat kesalahan yang rendah pada data _training_. Selain itu, nilai _loss_ pada data _training_ sebesar 0.64 juga menunjukkan bahwa model telah berhasil mengurangi kesalahan prediksi pada data _training_.
+
+Namun, pada data validasi, nilai RMSE sedikit meningkat menjadi 0.36. Ini menunjukkan bahwa model mungkin mengalami sedikit _overfitting_, yaitu ketika model terlalu terfokus pada data _training_ dan tidak secara akurat dapat menggeneralisasi pada data yang belum pernah dilihat sebelumnya. Nilai _loss_ pada data validasi sebesar 0.72 juga menunjukkan adanya peningkatan kesalahan prediksi pada data validasi.
+
+## Conclusion
 
 ## REFERENSI
 
@@ -464,3 +498,5 @@ Tabel 14. Contoh rekomendasi tempat wisata menggunakan metode _Collaborative Fil
 [[14]](https://www.sciencedirect.com/science/article/abs/pii/S0020025515001243) P. Xia, L. Zhang, and F. Li, “Learning similarity with cosine similarity ensemble,” Information Sciences, vol. 307, pp. 39–52, 2015. doi:10.1016/j.ins.2015.02.024.
 
 [[15]](https://arxiv.org/abs/1708.01715) O. Kuchaiev and B. Ginsburg, “Training Deep AutoEncoders for Collaborative Filtering,” Arxiv, 2017.
+
+[[16]](https://gmd.copernicus.org/preprints/7/1525/2014/gmdd-7-1525-2014.pdf) T. Chai and R. R. Draxler, Root mean square error (RMSE) or mean absolute error (mae)?, 2014. doi:10.5194/gmdd-7-1525-2014.
