@@ -10,7 +10,7 @@ Berbagai banyaknya pilihan tempat wisata di Indonesia tak jarang menyebabkan cal
 
 Berdasarkan permasalahan diatas, penulis melakukan proyek pengembangan sistem rekomendasi tempat wisata di Indonesia. Proyek ini bertujuan untuk membantu pengguna dengan menyaring informasi dan menyajikan rekomendasi yang sesuai dengan preferensi mereka sehingga meningkatkan pengalaman wisatawan yang memuaskan dan mampu meningkatkan promosi dan pemasaran destinasi wisata.
 
-Sistem yang dikembangkan menggunakan teknik-teknik dalam bidang pemrosesan bahasa alami, analisis data, dan kecerdasan buatan untuk memberikan rekomendasi yang personal dan relevan kepada pengguna seperti _Content Based Filtering_ dan _Collaborative Filtering_. _Content-based filtering_ memberikan suatu rekomendasi berdasarkan hasil analisa kemiripan item yang telah dinilai oleh para penggunanya [[4]](https://scholar.archive.org/work/gxrj3ap7z5ashl3xj57kllenk4/access/wayback/https://ejurnal.mikroskil.ac.id/index.php/jsm/article/download/816/pdf). Sedangkan, _Collaborative filtering_ adalah suatu konsep dimana opini dari pengguna lain yang ada digunakan untuk memprediksi item yang mungkin disukai/diminati oleh seorang pengguna [[5]](https://ejournal.undip.ac.id/index.php/jmasif/article/view/31482). Teknik ini mampu memberikan hasil yang signifikan dalam meningkatkan pengalaman penelurusan pengguna yang dipersonalisasi [[6]](https://ieeexplore.ieee.org/abstract/document/7254144).
+Sistem yang dikembangkan menggunakan teknik-teknik dalam bidang pemrosesan bahasa alami, analisis data, dan kecerdasan buatan untuk memberikan rekomendasi yang personal dan relevan kepada pengguna seperti _Content-based Filtering_ dan _Collaborative Filtering_. _Content-based filtering_ memberikan suatu rekomendasi berdasarkan hasil analisa kemiripan item yang telah dinilai oleh para penggunanya [[4]](https://scholar.archive.org/work/gxrj3ap7z5ashl3xj57kllenk4/access/wayback/https://ejurnal.mikroskil.ac.id/index.php/jsm/article/download/816/pdf). Sedangkan, _Collaborative filtering_ adalah suatu konsep dimana opini dari pengguna lain yang ada digunakan untuk memprediksi item yang mungkin disukai/diminati oleh seorang pengguna [[5]](https://ejournal.undip.ac.id/index.php/jmasif/article/view/31482). Teknik ini mampu memberikan hasil yang signifikan dalam meningkatkan pengalaman penelurusan pengguna yang dipersonalisasi [[6]](https://ieeexplore.ieee.org/abstract/document/7254144).
 
 ## Business Understanding
 
@@ -48,7 +48,7 @@ Pada proyek ini, penulis menggunakan teknik _Content-based Filtering_ dan _Colla
 
   Kelebihan dari _Collaborative Filtering_ adalah kemampuannya dalam menemukan item yang baru atau tidak pernah diketahui oleh pengguna. Metode ini mengandalkan kebijaksanaan kolektif pengguna untuk memberikan rekomendasi [[12]](https://www.ijcaonline.org/archives/volume167/number12/sang-2017-ijca-914490.pdf).
 
-Penggunaan teknik _Content Based Filtering_ pada proyek ini adalah dalam memberikan rekomendasi yang dipersonalisasi berdasarkan data wisatawan dan tempat wisata yang dikunjungi. Sedangkan, teknik _Collaborative Filtering_ untuk merekomendasikan destinasi wisata lain yang mungkin disukai oleh calon wisatawan yang belum pernah mengunjungi tempat tersebut.
+Penggunaan teknik _Content-based Filtering_ pada proyek ini adalah dalam memberikan rekomendasi yang dipersonalisasi berdasarkan data wisatawan dan tempat wisata yang dikunjungi. Sedangkan, teknik _Collaborative Filtering_ untuk merekomendasikan destinasi wisata lain yang mungkin disukai oleh calon wisatawan yang belum pernah mengunjungi tempat tersebut.
 
 ## Data Understanding
 
@@ -205,7 +205,7 @@ Tabel 6. Jumlah data yang hilang pada setiap kolom.
 
 Tabel 6 menunjukkan jumlah nilai yang hilang (_missing values_) pada setiap kolom dalam _dataset_. Nilai yang hilang menunjukkan bahwa tidak ada data yang tersedia untuk kolom tersebut pada entri atau tempat wisata tertentu. Hal ini dilakukan untuk memastikan kualitas dan integritas data dalam _dataset_. Dengan mengetahui jumlah dan lokasi nilai yang hilang maka dapat diketahui kelengkapan, identitas, serta kualitas data.
 
-**2. Melakukan _data preprocessing_ untuk persiapan dalam menggunakan metode _Content-base Filtering_ dan _Collaborative Filtering_.**
+**2. Melakukan _data preprocessing_ untuk persiapan dalam menggunakan metode _Content-based Filtering_ dan _Collaborative Filtering_.**
 
 **2.1. Menggabungkan data tourism_with_id, tourism_rating dan user yang bertujuan untuk mengumpulkan keseluruhan data yang memiliki entitas yang sama.**
 
@@ -292,7 +292,7 @@ Tabel 10 menunjukkan jumlah data unik pada kolom `Category` yang terdiri dari be
 
 Jumlah _value_ pada _list_ yang dimiliki saat ini dari setiap kolom adalah 437.
 
-**2.8 Membuat _dataframe_ baru dengan cara membuat _dictionary_ dari hasil _list_ sebelumnya pada masing-masing kolom. Bertujuan untuk pemroresan data yang akan digunakan untuk pembuatan _Content-base Filtering_ dan _Collaborative Filtering_.**
+**2.8 Membuat _dataframe_ baru dengan cara membuat _dictionary_ dari hasil _list_ sebelumnya pada masing-masing kolom. Bertujuan untuk pemroresan data yang akan digunakan untuk pembuatan _Content-based Filtering_ dan _Collaborative Filtering_.**
 
 Tabel 11. Beberapa data pada kolom `id`, `place_name`, dan `category`.
 
@@ -310,9 +310,9 @@ Tabel 11. Beberapa data pada kolom `id`, `place_name`, dan `category`.
 | 436 | Taman Flora Bratang Surabaya              | Taman_Hiburan |
 | 437 | Gereja Perawan Maria Tak Berdosa Surabaya | Tempat_Ibadah |
 
-Tabel 11 menampilkan beberapa data dari kolom `id`, `place_name`, dan `category` yang terdapat dalam _dataset_. Data ini akan digunakan pada pembuatan sistem rekomendasi menggunakan metode _Content-base Filtering_ dan _Collaborative Filtering_.
+Tabel 11 menampilkan beberapa data dari kolom `id`, `place_name`, dan `category` yang terdapat dalam _dataset_. Data ini akan digunakan pada pembuatan sistem rekomendasi menggunakan metode _Content-based Filtering_ dan _Collaborative Filtering_.
 
-**2.8.1. _Data preprocessing_ untuk penggunaan metode _Content-base Filtering_.**
+**2.8.1. _Data preprocessing_ untuk penggunaan metode _Content-based Filtering_.**
 
 a. Melakukan vektorisasi pada data kategori yang bertujuan untuk menemukan representasi fitur penting dari setiap kategori tempat wisata.
 
@@ -326,7 +326,7 @@ e. Melakukan perhitungan tingkat kemiripan menggunakan metode _Cosine Similarity
 
 f. Membuat _dataframe_ dari matriks _cosine similarity_ (`cosine_sim`) dengan baris dan kolom yang berupa nama tempat wisata. Bertujuan untuk memvisualisasikan _similarity matrix_ antara tempat wisata dalam bentuk _dataframe_, sehingga memudahkan dalam menganalisis kemiripan antara tempat-tempat wisata tersebut.
 
-Setelah tahapan ini, maka tahapan selanjutnya adalah melakukan _modelling_ menggunakan metode _Content-base Filtering_.
+Setelah tahapan ini, maka tahapan selanjutnya adalah melakukan _modelling_ menggunakan metode _Content-based Filtering_.
 
 **2.8.2. _Data preprocessing_ untuk penggunaan metode _Collaborative Filtering_.**
 
@@ -366,6 +366,73 @@ h. Mengacak urutan data agar mendapatkan variasi data pada saat melakukan pembag
 
 i. Membagi _dataset_ menjadi 80% data latih dan 20% data validasi. Bertujuan untuk persiapan data dalam menerapkan ke model _Collaborative Filtering_.
 
+## Modelling
+
+Pada proyek ini, digunakan 2 metode untuk mengatasi rumusan masalah yang telah didefinisikan sebelumnya. Dalam membuat sistem rekomendasi yang dipersonalisasi akan menggunakan metode _Content-based Filtering_. Sedangkan, pembuatan sistem rekomendasi yang merekomendasikan destinasi wisata lain yang mungkin disukai oleh calon wisatawan yang belum pernah mengunjungi tempat tersebut menggunakan metode _Collaborative Filtering_. Berikut penjelasan mengenai lebih lanjut mengenai penggunaan metode tersebut:
+
+**_Content-based Filtering_**
+
+_Content-Based Filtering_ adalah salah satu metode sistem rekomendasi yang menggunakan informasi atau konten dari item (misalnya, film, produk, atau tempat wisata) yang akan direkomendasikan untuk menentukan kesesuaian atau relevansi dengan preferensi pengguna. Dalam melakukan perhitungan karakteristik dapat menggunakan _cosine similarity_. _Cosine Similarity_ adalah salah satu metode perhitungan kesamaan atau _similarity_ yang digunakan dalam _content-based filtering_. Metode ini mengukur kemiripan antara dua vektor dalam ruang fitur dengan menghitung kosinus sudut antara kedua vektor tersebut. Semakin kecil sudut kosinus, semakin mirip kedua vektor dan semakin tinggi nilai _similarity_ [[14]](https://www.sciencedirect.com/science/article/abs/pii/S0020025515001243).
+
+Kelebihan dari metode ini adalah metode ini tidak memerlukan data riwayat pengguna atau kolaborasi antar pengguna, sehingga cocok untuk kasus _cold-start_, yaitu ketika terdapat item baru atau pengguna baru tanpa data sebelumnya. Sedangkan, kekurangannya adalah terbatas dalam menemukan item yang tidak sejenis dengan preferensi pengguna sebelumnya. Jika konten yang ada tidak cukup beragam, rekomendasi dapat menjadi terbatas dan kurang beragam.
+
+Cara kerja metode _content-based filtering_ menggunakan _cosine similarity_ adalah sebagai berikut:
+
+1. Representasi Vektor: Setiap item direpresentasikan sebagai vektor fitur, di mana setiap dimensi vektor mewakili suatu atribut atau karakteristik dari item tersebut.
+
+2. Penghitungan _Similarity_: Ketika pengguna memberikan preferensi atau _rating_ terhadap beberapa item, sistem akan menggunakan vektor fitur dari item tersebut dan menghitung _similarity_ dengan vektor fitur item lainnya menggunakan _cosine similarity_.
+
+3. Perankingan Item: Item yang memiliki nilai _similarity_ tertinggi akan diurutkan dalam urutan tertentu dan dianggap sebagai item yang cocok untuk direkomendasikan.
+
+Hasil _Top-N Recommendations_ pada rekomendasi tempat wisata selain "Bukit Moko" dapat dilihat pada Tabel 13.
+
+Tabel 13. 5 Rekomendasi tempat wisata menggunakan metode _content-based filtering_.
+
+| place_name             | Similarity | category   |
+| ---------------------- | ---------- | ---------- |
+| Curug Bugbrug          | 1.0        | Cagar_Alam |
+| Taman Bunga Cihideung  | 1.0        | Cagar_Alam |
+| Observatorium Bosscha  | 1.0        | Cagar_Alam |
+| Goa Pindul             | 1.0        | Cagar_Alam |
+| Perkebunan Teh Malabar | 1.0        | Cagar_Alam |
+
+Tabel 13 menampilkan 5 rekomendasi tempat wisata beserta nilai similaritas dan kategori mereka untuk tempat wisata "Bukit Moko". Semua tempat wisata dalam tabel memiliki similaritas maksimum dengan nilai 1.0.
+
+**_Collaborative Filtering_**
+
+_Collaborative filtering_ adalah salah satu metode dalam sistem rekomendasi yang mengandalkan informasi dari pengguna lain atau kesamaan preferensi pengguna untuk menghasilkan rekomendasi. Tujuan dari _collaborative filtering_ adalah mencari korelasi antara pengguna dan item (misalnya produk, film, atau tempat wisata) berdasarkan data riwayat interaksi antara pengguna dan item tersebut.
+
+RecommenderNet adalah model rekomendasi yang menggunakan arsitektur _neural network_ untuk menerapkan _collaborative filtering_. Model ini dapat mengambil informasi dari data riwayat interaksi pengguna dan item, seperti _rating_ atau _review_, dan menghasilkan rekomendasi yang personal untuk setiap pengguna [[15]](https://arxiv.org/abs/1708.01715).
+
+_Collaborative filtering_ menggunakan RecommenderNet memiliki kelebihan dalam memberikan rekomendasi personal dan relevan berdasarkan preferensi pengguna sebelumnya serta kemampuannya menangani data besar dan kompleks. Model ini dapat diadaptasi untuk berbagai jenis data, seperti data peringkat atau data biner. Namun, metode ini memiliki kelemahan, seperti kesulitan dalam memberikan rekomendasi untuk pengguna atau item baru (_cold-start problem_).
+
+Cara kerja metode _collaborative filtering_ menggunakan RecommenderNet adalah sebagai berikut:
+
+1. Representasi Pengguna dan Item: Setiap pengguna dan item diwakili oleh vektor _embedding_ dalam ruang fitur multidimensional. Representasi ini digunakan untuk mencari kesamaan antara pengguna dan item.
+
+2. Menemukan Kesamaan: Metode _collaborative filtering_ mencari kesamaan antara pengguna dan item berdasarkan vektor _embedding_. Kesamaan ini dapat diukur dengan menggunakan metrik _dot product_.
+
+3. Memperkirakan _Rating_: Setelah kesamaan antara pengguna dan item ditemukan, model akan memperkirakan _rating_ yang mungkin akan diberikan oleh pengguna untuk item yang belum dilihat atau diinteraksikan sebelumnya sehingga dapat memberikan rekomendasi.
+
+Hasil _Top-N Recommendations_ pada rekomendasi tempat wisata lain berdasarkan _rating_ tempat wisata sebelumnya yang pernah dikunjungi oleh pengguna dengan _Id_ 195 dapat dilihat pada Tabel 14.
+
+Tabel 14. Contoh rekomendasi tempat wisata menggunakan metode _Collaborative Filtering_.
+
+| Place Name                  | Category           |
+| --------------------------- | ------------------ |
+| Jembatan Kota Intan         | Budaya             |
+| Pasar Tanah Abang           | Pusat_Perbelanjaan |
+| Embung Tambakboyo           | Taman_Hiburan      |
+| Candi Borobudur             | Budaya             |
+| Panghegar Waterboom Bandung | Taman_Hiburan      |
+| Wot Batu                    | Cagar_Alam         |
+| Saung Angklung Mang Udjo    | Budaya             |
+| Grand Maerakaca             | Taman_Hiburan      |
+| GPIB Immanuel Semarang      | Tempat_Ibadah      |
+| La Kana Chapel              | Taman_Hiburan      |
+
+## Evaluation
+
 ## REFERENSI
 
 [[1]](https://www.jurnal.ummu.ac.id/index.php/kawasa/article/view/443) T. A. Ruray and R. Pratama, “PENGARUH DAYA TARIK DAN AKSESIBILITAS TERHADAP KEPUTUSAN BERKUNJUNG PADA OBJEK WISATA PANTAI AKESAHU KOTA TIDORE KEPULAUAN,” KAWASA: Jurnal Ilmu-Ilmu Sosial dan Politik, vol. XI, no. 2, Jun. 2020.
@@ -393,3 +460,7 @@ i. Membagi _dataset_ menjadi 80% data latih dan 20% data validasi. Bertujuan unt
 [[12]](https://www.ijcaonline.org/archives/volume167/number12/sang-2017-ijca-914490.pdf) A. Sang and S. K., “Design and implementation of collaborative filtering approach for movie recommendation system,” International Journal of Computer Applications, vol. 167, no. 12, pp. 18–24, 2017. doi:10.5120/ijca2017914490.
 
 [[13]](https://bitlabs.id/blog/diagram-garis-adalah/) Minlab, “Diagram Garis: Pengertian, Cara Membuat, & Serba-Serbinya” Bitlabs, https://bitlabs.id/blog/diagram-garis-adalah/ (accessed Jul. 18, 2023).
+
+[[14]](https://www.sciencedirect.com/science/article/abs/pii/S0020025515001243) P. Xia, L. Zhang, and F. Li, “Learning similarity with cosine similarity ensemble,” Information Sciences, vol. 307, pp. 39–52, 2015. doi:10.1016/j.ins.2015.02.024.
+
+[[15]](https://arxiv.org/abs/1708.01715) O. Kuchaiev and B. Ginsburg, “Training Deep AutoEncoders for Collaborative Filtering,” Arxiv, 2017.
