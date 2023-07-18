@@ -140,7 +140,7 @@ Penjelasan dari Tabel 2 adalah sebagai berikut:
 - Kolom `Place_Tourism4` berisi data berupa teks atau _string_ (_object_) dan memiliki 66 data. Terdapat 34 nilai _null_ atau kosong pada kolom ini.
 - Kolom `Place_Tourism5` berisi data berupa teks atau _string_ (_object_) dan memiliki 39 data. Terdapat 61 nilai _null_ atau kosong pada kolom ini.
 
-Dengan melihat tabel di atas, kita dapat mengetahui informasi tentang struktur dataset, jumlah data yang kosong (null), dan tipe data dari setiap kolom. Hal ini penting untuk melakukan analisis data lebih lanjut atau mempersiapkan data sebelum dilakukan pemodelan.
+Dengan melihat tabel di atas, dapat diketahui informasi tentang struktur dataset, jumlah data yang kosong (null), dan tipe data dari setiap kolom. Hal ini penting untuk melakukan analisis data lebih lanjut atau mempersiapkan data sebelum dilakukan pemodelan.
 
 **1.1.2. Menampilkan sebaran statistik deskriptif pada kolom numerik, yaitu kolom `Package`.**
 
