@@ -102,7 +102,269 @@ Berdasarkan informasi pada Tabel 1 maka dapat dijabarkan variabel pada masing-ma
    - `Location` merupakan data lokasi pengguna.
    - `Age` merupakan data umur pengguna.
 
-Berdasarkan data yang digunakan diatas terdapat beberapa bentuk visualisasi data yang digunakan untuk membantu memahami data, contohnya sebagai berikut:
+Berdasarkan data yang digunakan diatas dilakukan representasi data dalam bentuk tabel serta visualisasi untuk membantu memahami data, contoh visualisasi yang digunakan adalah _line chart_. _Line Chart_ merupakan bentuk visualisasi statistik yang bertujuan untuk menampilkan data yang berkelanjutan dengan periode atau rentang nilai tertentu. Garis yang dihasilkan dapat menunjukkan tren kenaikan atau penurunan pada data. Misalnya pada Gambar 1, terdapat empat data penjualan tahunan per kuartal selama 3 bulan yang terlihat mengalami kenaikan setiap bulannya.
+
+[![line-chart.png](https://i.postimg.cc/1zFycnDW/line-chart.png)](https://postimg.cc/cKsqdJ9Y)
+
+Gambar 1. Contoh bentuk _line chart_ [[13]](https://bitlabs.id/blog/diagram-garis-adalah/).
+
+## Data Preparation
+
+Tahapan data preparation yang dilakukan pada proyek ini dapat dijabarkan sebagai berikut:
+
+**1. Melakukan EDA (_Exploratory Data Analysis_), bertujuan untuk mendapatkan informasi fitur mengenai _dataset_ yang digunakan.**
+
+Pada tahapan ini diperlihatkan hasil dari setiap tahapan EDA pada _dataset_ `package_tourism`. Tahapan ini juga diterapkan pada _dataset_ `tourism_rating`, `tourism_with_id`, dan `user`.
+
+**1.1.1. Memeriksa tipe data setiap kolom.**
+
+Tabel 2. stuktur data pada data `package_tourism`.
+
+| _Column_       | _Count_ | _Dtype_ |
+| -------------- | ------- | ------- |
+| Package        | 100     | int64   |
+| City           | 100     | object  |
+| Place_Tourism1 | 100     | object  |
+| Place_Tourism2 | 100     | object  |
+| Place_Tourism3 | 100     | object  |
+| Place_Tourism4 | 66      | object  |
+| Place_Tourism5 | 39      | object  |
+
+Penjelasan dari Tabel 2 adalah sebagai berikut:
+
+- Kolom `Package` berisi nilai _integer_ (int64) dan memiliki 100 data.
+- Kolom `City` berisi data berupa teks atau _string_ (_object_) dan memiliki 100 data.
+- Kolom `Place_Tourism1` berisi data berupa teks atau _string_ (_object_) dan memiliki 100 data.
+- Kolom `Place_Tourism2` berisi data berupa teks atau _string_ (_object_) dan memiliki 100 data.
+- Kolom `Place_Tourism3` berisi data berupa teks atau _string_ (_object_) dan memiliki 100 data.
+- Kolom `Place_Tourism4` berisi data berupa teks atau _string_ (_object_) dan memiliki 66 data. Terdapat 34 nilai _null_ atau kosong pada kolom ini.
+- Kolom `Place_Tourism5` berisi data berupa teks atau _string_ (_object_) dan memiliki 39 data. Terdapat 61 nilai _null_ atau kosong pada kolom ini.
+
+Dengan melihat tabel di atas, kita dapat mengetahui informasi tentang struktur dataset, jumlah data yang kosong (null), dan tipe data dari setiap kolom. Hal ini penting untuk melakukan analisis data lebih lanjut atau mempersiapkan data sebelum dilakukan pemodelan.
+
+**1.1.2. Menampilkan sebaran statistik deskriptif pada kolom numerik, yaitu kolom `Package`.**
+
+Tabel 3. Distribusi statistik pada kolom `Package`.
+
+|       | _Package_  |
+| ----- | ---------- |
+| count | 100.000000 |
+| mean  | 50.500000  |
+| std   | 29.011492  |
+| min   | 1.000000   |
+| 25%   | 25.750000  |
+| 50%   | 50.500000  |
+| 75%   | 75.250000  |
+| max   | 100.000000 |
+
+Tabel 3 menunjukkan informasi terkait distribusi data dari 100 entri. Rata-rata nilai `Package` adalah 50.5 dengan standar deviasi sebesar 29.01, menandakan bahwa data memiliki variasi yang cukup signifikan. Nilai minimum adalah 1 dan nilai maksimum adalah 100, menunjukkan rentang nilai yang luas. Kuartil pertama (25%) terletak pada 25.75, median (50%) berada pada nilai 50.5, dan kuartil ketiga (75%) berada pada 75.25. Dengan demikian, setengah dari data berada di bawah nilai median, sementara setengahnya lagi berada di atasnya. Informasi ini memberikan gambaran tentang distribusi dan karakteristik data pada kolom `Package`.
+
+**1.1.3. Menampilkan jumlah data unik pada setiap kolom.**
+
+Tabel 4. Jumlah data unik pada setiap kolom di data `package_tourism`.
+
+| Kolom          | Jumlah |
+| -------------- | ------ |
+| Package        | 100    |
+| City           | 5      |
+| Place_Tourism1 | 89     |
+| Place_Tourism2 | 93     |
+| Place_Tourism3 | 92     |
+| Place_Tourism4 | 61     |
+| Place_Tourism5 | 38     |
+
+Pada Tabel 4, dapat diketahui jumlah data unik pada masing-masing kolom. Pertama, pada kolom `Package` terdapat 100 data unik, menandakan adanya 100 jenis paket dalam _dataset_ ini. Selanjutnya, kolom `City` memiliki 5 data unik, yang mengindikasikan bahwa _dataset_ ini mencakup 5 kota berbeda tempat berbagai tempat wisata berada. Kemudian, kolom `Place_Tourism1` hingga `Place_Tourism5` memiliki masing-masing 89, 93,92, 61 dan 38 data unik. Angka ini menunjukkan adanya variasi tempat wisata yang cukup signifikan dalam _dataset_ ini, yang dapat memberikan informasi tentang beragamnya destinasi yang ditawarkan. Hal ini bertujuan untuk memahami variasi dan distribusi nilai pada suatu kolom atau atribut dalam _dataset_.
+
+**1.1.4. Menampilkan jumlah data deskriptif dari setiap kolom.**
+
+Tabel 5. Sebaran data deskriptif pada kolom `City`.
+
+| Kota       | Jumlah |
+| ---------- | ------ |
+| Jakarta    | 20     |
+| Yogyakarta | 20     |
+| Bandung    | 20     |
+| Semarang   | 20     |
+| Surabaya   | 20     |
+
+Tabel 5 merupakan contoh jumlah sebaran data deskriptif pada salah satu kolom yaitu kolom `City`. Informasi tersebut menunjukkan jumlah data atau entri untuk setiap kota dalam _dataset_ dengan jumlah 20 entri atau tempat wisata untuk masing-masing kota, yaitu Jakarta, Yogyakarta, Bandung, Semarang, dan Surabaya. Hal ini bertujuan untuk mengetahui jumlah persebaran setiap data pada masing-masing kolom.
+
+**1.1.5. Melihat data yang hilang.**
+
+Tabel 6. Jumlah data yang hilang pada setiap kolom.
+
+| Kolom          | Jumlah |
+| -------------- | ------ |
+| Package        | 0      |
+| City           | 0      |
+| Place_Tourism1 | 0      |
+| Place_Tourism2 | 0      |
+| Place_Tourism3 | 0      |
+| Place_Tourism4 | 34     |
+| Place_Tourism5 | 61     |
+
+Tabel 6 menunjukkan jumlah nilai yang hilang (_missing values_) pada setiap kolom dalam _dataset_. Nilai yang hilang menunjukkan bahwa tidak ada data yang tersedia untuk kolom tersebut pada entri atau tempat wisata tertentu. Hal ini dilakukan untuk memastikan kualitas dan integritas data dalam _dataset_. Dengan mengetahui jumlah dan lokasi nilai yang hilang maka dapat diketahui kelengkapan, identitas, serta kualitas data.
+
+**2. Melakukan _data preprocessing_ untuk persiapan dalam menggunakan metode _Content-base Filtering_ dan _Collaborative Filtering_.**
+
+**2.1. Menggabungkan data tourism_with_id, tourism_rating dan user yang bertujuan untuk mengumpulkan keseluruhan data yang memiliki entitas yang sama.**
+
+Tabel 7. Contoh hasil penggabungan _dataset_.
+
+| Place_Id | Place_Name       | Description                                     | Category | City    | Price | Rating | Time_Minutes | Coordinate                       | Lat       | Long       | Unnamed: 11 | Unnamed: 12 | User_Id | Place_Ratings | Location              | Age |
+| -------- | ---------------- | ----------------------------------------------- | -------- | ------- | ----- | ------ | ------------ | -------------------------------- | --------- | ---------- | ----------- | ----------- | ------- | ------------- | --------------------- | --- |
+| 1        | Monumen Nasional | Monumen Nasional atau yang populer disingkat... | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | NaN         | NaN         | 1       | 36            | Solo, Jawa Tengah     | 20  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | NaN         | NaN         | 1       | 38            | Serang, Banten        | 26  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | NaN         | NaN         | 1       | 64            | Bandung, Jawa Barat   | 38  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | NaN         | NaN         | 1       | 74            | Semarang, Jawa Tengah | 30  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | NaN         | NaN         | 1       | 86            |                       |     |
+
+Tabel 7 merupakan data dari tempat wisata yang berisi informasi tentang identifikasi tempat wisata, seperti `Place_Id` dan `Place_Name`. Terdapat juga deskripsi singkat tentang tempat wisata tersebut dalam kolom `Description` dan kategori tempat wisata dalam kolom `Category`. Data ini terkait dengan kota di mana tempat wisata berada, yang dinyatakan dalam kolom `City`.
+
+Selain itu, terdapat informasi tentang harga tiket masuk (`Price`) dan `rating` tempat wisata (`Rating`) dalam kolom yang sesuai. Durasi waktu yang direkomendasikan untuk mengunjungi tempat wisata tersebut ditampilkan dalam kolom `Time_Minutes`.
+
+Data koordinat lokasi tempat wisata tersedia dalam bentuk `dictionary` dalam kolom `Coordinate`, dengan informasi `latitude` (_Lat_) dan `longitude` (_Long_). Terdapat pula beberapa kolom dengan nama `Unnamed: 11` dan `Unnamed: 12` yang tidak memiliki informasi yang terlihat dalam contoh data ini.
+
+Selanjutnya, data terkait pengguna atau pengunjung tempat wisata juga disajikan dalam tabel ini, seperti `User_Id` yang merupakan identifikasi pengguna, dan `Place_Ratings` yang menunjukkan `rating` yang diberikan oleh pengguna untuk tempat wisata tersebut. Informasi lokasi dan usia pengguna juga terdapat dalam kolom `Location` dan `Age`.
+
+**2.2. Menghapus kolom `Unnamed: 11`, `Unnamed: 12` karena tidak memiliki arti baris dan nama kolom yang jelas.**
+
+Tabel 8. Contoh hasil penghapusan kolom `Unnamed: 11`, `Unnamed: 12` pada _dataset_.
+
+| Place_Id | Place_Name       | Description                                     | Category | City    | Price | Rating | Time_Minutes | Coordinate                       | Lat       | Long       | User_Id | Place_Ratings | Location              | Age |
+| -------- | ---------------- | ----------------------------------------------- | -------- | ------- | ----- | ------ | ------------ | -------------------------------- | --------- | ---------- | ------- | ------------- | --------------------- | --- |
+| 1        | Monumen Nasional | Monumen Nasional atau yang populer disingkat... | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | 36      | 4             | Solo, Jawa Tengah     | 20  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | 38      | 2             | Serang, Banten        | 26  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | 64      | 2             | Bandung, Jawa Barat   | 38  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | 74      | 2             | Semarang, Jawa Tengah | 30  |
+| 1        | Monumen Nasional | ...                                             | Budaya   | Jakarta | 20000 | 4.6    | 15.0         | {'lat': -6.1753924, 'lng': ... } | -6.175392 | 106.827153 | 86      | 4             | Depok, Jawa Barat     | 32  |
+
+Tabel 8 menampilkan kolom saat ini seperti `Place_Id`, `Place_Name`, `Description`, `Category`, `City`, `Price`, `Rating`, `Time_Minutes`, `Coordinate`, `Lat`, `Long`, `User_Id`, `Place_Ratings`, `Location`, dan `Age`.
+
+**2.3. Melakukan pengecekan nilai _null_ pada data yang sudah digabungkan.**
+
+Tabel 9. Hasil pengecekan nilai _null_.
+
+| Kolom         | Jumlah |
+| ------------- | ------ |
+| Place_Id      | 0      |
+| Place_Name    | 0      |
+| Description   | 0      |
+| Category      | 0      |
+| City          | 0      |
+| Price         | 0      |
+| Rating        | 0      |
+| Time_Minutes  | 5372   |
+| Coordinate    | 0      |
+| Lat           | 0      |
+| Long          | 0      |
+| User_Id       | 0      |
+| Place_Ratings | 0      |
+| Location      | 0      |
+| Age           | 0      |
+
+Pada Tabel 9, dapat diketahui bahwa kolom `Time_minutes` masih memiliki nilai _null_. Namun, karena tidak memiliki relevansi terhadap `Place_name` (kolom target) maka akan di-_drop_ juga.
+
+**2.4. Mengurutkan data berdasarkan `Place_Id` bertujuan untuk mengorganisir data sehingga data dengan `Place_Id` yang sama akan berada bersamaan dalam _DataFrame_.**
+
+**2.5. Menghapus data duplikat berdasarkan kolom `Place_Id` bertujuan untuk mengambil data pada kolom `Place_name` yang bersifat unik.**
+
+Hasil pada tahapan ini akan mendapatkan 437 data unik berdasarkan kolom `Place_Id` dari total 10000 jumlah data pada _dataset_.
+
+**2.6 Mengubah data pada kolom `Category` yang memiliki nilai 2 kata sehingga dipisahkan oleh tanda spasi kemudian diganti menjadi _underscore_ agar menjadi sebuah kata yang terhubung. Tujuannya untuk menghindari terlalu banyak kategori berdasarkan jumlah kata yang dapat menyebabkan ambiguinitas.**
+
+Hasil dari tahapan ini dapat dilihat pada Tabel 10.
+
+Tabel 10. Jumlah sebaran data deskriptif pada kolom `Category`.
+
+| Category           | Jumlah |
+| ------------------ | ------ |
+| Taman_Hiburan      | 135    |
+| Budaya             | 117    |
+| Cagar_Alam         | 106    |
+| Bahari             | 47     |
+| Tempat_Ibadah      | 17     |
+| Pusat_Perbelanjaan | 15     |
+
+Tabel 10 menunjukkan jumlah data unik pada kolom `Category` yang terdiri dari beberapa kategori tempat wisata.
+
+**2.7. Mengubah data ke dalam bentuk _list_ pada kolom `Place_Id`, `Place_Name`, dan `Category`. Bertujuan untuk pembuatan _dataframe_ baru yang akan dijadikan sebagai data penerapan sistem rekomendasi.**
+
+Jumlah _value_ pada _list_ yang dimiliki saat ini dari setiap kolom adalah 437.
+
+**2.8 Membuat _dataframe_ baru dengan cara membuat _dictionary_ dari hasil _list_ sebelumnya pada masing-masing kolom. Bertujuan untuk pemroresan data yang akan digunakan untuk pembuatan _Content-base Filtering_ dan _Collaborative Filtering_.**
+
+Tabel 11. Beberapa data pada kolom `id`, `place_name`, dan `category`.
+
+| id  | place_name                                | category      |
+| --- | ----------------------------------------- | ------------- |
+| 1   | Monumen Nasional                          | Budaya        |
+| 2   | Kota Tua                                  | Budaya        |
+| 3   | Dunia Fantasi                             | Taman_Hiburan |
+| 4   | Taman Mini Indonesia Indah (TMII)         | Taman_Hiburan |
+| 5   | Atlantis Water Adventure                  | Taman_Hiburan |
+| ... | ...                                       | ...           |
+| 433 | Museum Mpu Tantular                       | Budaya        |
+| 434 | Taman Bungkul                             | Taman_Hiburan |
+| 435 | Taman Air Mancur Menari Kenjeran          | Taman_Hiburan |
+| 436 | Taman Flora Bratang Surabaya              | Taman_Hiburan |
+| 437 | Gereja Perawan Maria Tak Berdosa Surabaya | Tempat_Ibadah |
+
+Tabel 11 menampilkan beberapa data dari kolom `id`, `place_name`, dan `category` yang terdapat dalam _dataset_. Data ini akan digunakan pada pembuatan sistem rekomendasi menggunakan metode _Content-base Filtering_ dan _Collaborative Filtering_.
+
+**2.8.1. _Data preprocessing_ untuk penggunaan metode _Content-base Filtering_.**
+
+a. Melakukan vektorisasi pada data kategori yang bertujuan untuk menemukan representasi fitur penting dari setiap kategori tempat wisata.
+
+b. Melakukan transformasi pada data kategori ke dalam bentuk matriks. Hal ini bertujuan untuk mengubah data kategori menjadi repsentasi numerik sehingga memudahkan dalam penerapan ke metode _Content-based filtering_.
+
+c. Mengubah data sebelumnya yang berbentuk _sparse matrix_ menjadi _dense matrix_. Hal ini dikarenakan, pada tahap sebelumnya saat melakukan transformasi data teks menggunakan TF-IDF, hasilnya adalah _sparse matrix_ (matriks yang banyak elemennya bernilai nol) karena sebagian besar kata tidak muncul dalam setiap dokumen. Fungsi `todense()` digunakan untuk mengubah _sparse matrix_ menjadi bentuk matriks _dense_, di mana semua elemen (termasuk yang bernilai nol) akan ditampilkan dalam bentuk matriks yang utuh.
+
+d. Membuat _dataframe_ baru dengan kolom `category` dan baris `place_name` dengan nilainya adalah nilai matriks yang telah didefinisikan sebelumnya. Hal ini bertujuan menampilkan matriks untuk setiap kata (fitur) dalam kolom kategori tempat wisata dan setiap baris diisi dengan nama tempat wisata.
+
+e. Melakukan perhitungan tingkat kemiripan menggunakan metode _Cosine Similarity_ pada matriks yang bertujuan untuk mengukur sejauh mana dua vektor mendekati kesamaan berdasarkan arah.
+
+f. Membuat _dataframe_ dari matriks _cosine similarity_ (`cosine_sim`) dengan baris dan kolom yang berupa nama tempat wisata. Bertujuan untuk memvisualisasikan _similarity matrix_ antara tempat wisata dalam bentuk _dataframe_, sehingga memudahkan dalam menganalisis kemiripan antara tempat-tempat wisata tersebut.
+
+Setelah tahapan ini, maka tahapan selanjutnya adalah melakukan _modelling_ menggunakan metode _Content-base Filtering_.
+
+**2.8.2. _Data preprocessing_ untuk penggunaan metode _Collaborative Filtering_.**
+
+a. Menggunakan data `tourism_rating.csv` untuk pembuatan model _collaborative filtering_.
+
+Tabel 12. Beberapa data pada kolom `User_Id`, `Place_Id`, dan `Place_Ratings` dari dataset `tourism_rating.csv`.
+
+| User_Id | Place_Id | Place_Ratings |
+| ------- | -------- | ------------- |
+| 1       | 179      | 3             |
+| 1       | 344      | 2             |
+| 1       | 5        | 5             |
+| 1       | 373      | 3             |
+| 1       | 101      | 4             |
+| ...     | ...      | ...           |
+| 300     | 425      | 2             |
+| 300     | 64       | 4             |
+| 300     | 311      | 3             |
+| 300     | 279      | 4             |
+| 300     | 163      | 2             |
+
+Tabel 12 menampilkan beberapa data dari kolom `User_Id`, `Place_Id`, dan `Place_Ratings` yang terdapat dalam _dataset_ `tourism_rating.csv`.
+
+b. Mengubah data pada `User_Id` menjadi _list_ dengan nilai unik. Tujuannya adalah agar mudah melihat daftar pengguna (_user_) yang ada dalam data _rating_ tersebut serta persiapan melakukan _encoding_ pada data _list_. Hasil dari proses ini disimpan dalam variabel `list_user_id`.
+
+c. Melakukan _encoding_ pada variabel `list_user_id`. Bertujuan untuk menggantikan nilai dalam _list_ `list_user_id` dengan angka indeksnya sehingga mempermudah representasi dalam bentuk _dictionary_.
+
+d. Melakukan _encoding_ angka ke data `User_Id`. Bertujuan untuk mengonversi angka indeks kembali menjadi nilai `User_Id`.
+
+e. Melakukan langkah yang sama pada langkah b,c, dan d diatas terhadap kolom `Place_Id` dengan tujuan yang sama.
+
+f. Melakukan _mapping_ pada `User_Id` dan `Place_Id` ke _dataframe_ `user` dan `tourism`. Bertujuan untuk menghubungkan data pada `User_Id` dan `Place_Id` sehingga representasi data lebih mudah dipahami dan dapat digunakan ke proses pembuatan model.
+
+g. Mengubah kolom `Place_Ratings` menjadi tipe data `float` agar mendapatkan representasi numerik yang lebih tepat untuk _rating_ tempat wisata.
+
+h. Mengacak urutan data agar mendapatkan variasi data pada saat melakukan pembagian _dataset_.
+
+i. Membagi _dataset_ menjadi 80% data latih dan 20% data validasi. Bertujuan untuk persiapan data dalam menerapkan ke model _Collaborative Filtering_.
 
 ## REFERENSI
 
@@ -128,4 +390,6 @@ Berdasarkan data yang digunakan diatas terdapat beberapa bentuk visualisasi data
 
 [[11]](https://dl.acm.org/doi/fullHtml/10.1145/3482632.3487539) H. Wang, “Design and implementation of web online education platform based on user collaborative filtering algorithm,” 2021 4th International Conference on Information Systems and Computer Aided Education, 2021. doi:10.1145/3482632.3487539.
 
-[[12]](https://www.ijcaonline.org/archives/volume167/number12/sang-2017-ijca-914490.pdf) A. Sang and S. K., “Design and implementation of collaborative filtering approach for movie recommendation system,” International Journal of Computer Applications, vol. 167, no. 12, pp. 18–24, 2017. doi:10.5120/ijca2017914490
+[[12]](https://www.ijcaonline.org/archives/volume167/number12/sang-2017-ijca-914490.pdf) A. Sang and S. K., “Design and implementation of collaborative filtering approach for movie recommendation system,” International Journal of Computer Applications, vol. 167, no. 12, pp. 18–24, 2017. doi:10.5120/ijca2017914490.
+
+[[13]](https://bitlabs.id/blog/diagram-garis-adalah/) Minlab, “Diagram Garis: Pengertian, Cara Membuat, & Serba-Serbinya” Bitlabs, https://bitlabs.id/blog/diagram-garis-adalah/ (accessed Jul. 18, 2023).
