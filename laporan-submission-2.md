@@ -467,6 +467,12 @@ Namun, pada data validasi, nilai RMSE sedikit meningkat menjadi 0.36. Ini menunj
 
 ## Conclusion
 
+Berdasarkan hasil yang didapatkan, maka dapat disimpulkan sebagai berikut:
+
+1. Metode _content-based filtering_ dapat digunakan untuk membuat sistem rekomendasi tempat wisata yang dipersonalisasi. Pada pendekatan menggunakan _cosine similarity_, diperoleh hasil _similarity_ tertinggi yaitu 1.0 pada tempat wisata yang menjadi rekomendasi dari suatu tempat wisata lain.
+
+2. Metode collaborative filtering dapat digunakan untuk membuat sistem rekomendasi tempat wisata lain yang mungkin disukai oleh pengguna yang belum pernah mengunjungi tempat tersebut. Berdasarkan pendekatan yang dilakukan menggunakan RecommenderNet menunjukkan bahwa metode tersebut memiliki nilai _Root Mean Square Error_ (RMSE) yang relatif rendah pada data _training_ sebesar 0.31 dan data validasi, nilai RMSE sedikit meningkat menjadi 0.36.
+
 ## REFERENSI
 
 [[1]](https://www.jurnal.ummu.ac.id/index.php/kawasa/article/view/443) T. A. Ruray and R. Pratama, “PENGARUH DAYA TARIK DAN AKSESIBILITAS TERHADAP KEPUTUSAN BERKUNJUNG PADA OBJEK WISATA PANTAI AKESAHU KOTA TIDORE KEPULAUAN,” KAWASA: Jurnal Ilmu-Ilmu Sosial dan Politik, vol. XI, no. 2, Jun. 2020.
